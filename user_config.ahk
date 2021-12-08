@@ -131,3 +131,7 @@
 
 ; My shortcuts:
 #+q::WinClose A
+
+#Enter::Run wt.exe
+
+#s::run explorer
