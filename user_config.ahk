@@ -132,6 +132,9 @@
 ; My shortcuts:
 #+q::WinClose A
 
-#Enter::Run wt.exe
+#Enter::
+WinActivate Program Manager ; desktop
+Run wt.exe
+return
 
 #s::run explorer
