@@ -132,9 +132,12 @@
 ; My shortcuts:
 #+q::WinClose A
 
-#Enter::
-WinActivate Program Manager ; desktop
-Run wt.exe
-return
+Launch_Mail::Run C:\Users\mbere\AppData\Local\Discord\Update.exe --processStart Discord.exe
 
-#s::run explorer
+Launch_Media::
+if WinExist("Spotify")
+    WinActivate
+else 
+    Run "C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe"  --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf --app-url=https://open.spotify.com/?utm_source=pwa_install --app-launch-source=4
+Sleep 500
+return
