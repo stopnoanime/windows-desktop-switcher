@@ -141,3 +141,11 @@ else
     Run "C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe"  --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf --app-url=https://open.spotify.com/?utm_source=pwa_install --app-launch-source=4
 Sleep 500
 return
+
+Browser_Home::
+if WinExist("ahk_exe msedge.exe")
+    WinActivate
+else 
+    Run msedge.exe
+Sleep 500
+return
