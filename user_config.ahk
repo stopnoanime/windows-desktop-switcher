@@ -132,20 +132,35 @@
 ; My shortcuts:
 #+q::WinClose A
 
-Launch_Mail::Run C:\Users\mbere\AppData\Local\Discord\Update.exe --processStart Discord.exe
+Launch_Mail::
+    SetTitleMatchMode RegEx 
+    openOrMin("Discord$", "C:\Users\mbere\AppData\Local\Discord\Update.exe --processStart Discord.exe")
+    SetTitleMatchMode 1
+    return
 
 Launch_Media::
-if WinExist("Spotify")
-    WinActivate
-else 
-    Run "C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe"  --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf --app-url=https://open.spotify.com/?utm_source=pwa_install --app-launch-source=4
-Sleep 500
-return
+    openOrMin("Spotify", "C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe  --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf --app-url=https://open.spotify.com/?utm_source=pwa_install --app-launch-source=4")
+    return
 
 Browser_Home::
-if WinExist("ahk_exe msedge.exe")
-    WinActivate
-else 
-    Run msedge.exe
-Sleep 500
-return
+    SetTitleMatchMode RegEx 
+    openOrMin("Edge$", "msedge.exe")
+    SetTitleMatchMode 1
+    return
+
+openOrMin(find, runCommand) {
+    if WinExist(find) {
+        if WinActive(find) {
+            WinMinimize
+        } 
+        else {
+            WinActivate
+        }
+    }
+    else {
+        Run %runCommand%
+        Sleep 500
+    } 
+
+    return
+}
